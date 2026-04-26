@@ -1,0 +1,21 @@
+class Solution {
+    public boolean repeatedSubstringPattern(String s) {
+        int len = s.length();
+        int[] pi = new int[len];
+        
+        // Compute prefix function
+        for (int i = 1, j = 0; i < len; i++) {
+            while (j > 0 && s.charAt(i) != s.charAt(j)) {
+                j = pi[j - 1];
+            }
+            if (s.charAt(i) == s.charAt(j)) {
+                j++;
+            }
+            pi[i] = j;
+        }
+        
+        int longestPrefixSuffix = pi[len - 1];
+        // Check if length of s is divisible by (length - longestPrefixSuffix)
+        return (longestPrefixSuffix > 0) && (len % (len - longestPrefixSuffix) == 0);
+    }
+}

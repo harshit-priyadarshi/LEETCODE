@@ -1,0 +1,29 @@
+class Solution {
+    public int maxScore(String s) {
+        char[] s_array = s.toCharArray();
+        int max_score = 0;
+
+        for (int i = 1; i < s_array.length; i++) { // Split the string at different indices
+            int left_score = 0, right_score = 0;
+
+            // Count zeros in the left substring
+            for (int j = 0; j < i; j++) {
+                if (s_array[j] == '0') {
+                    left_score++;
+                }
+            }
+
+            // Count ones in the right substring
+            for (int j = i; j < s_array.length; j++) {
+                if (s_array[j] == '1') {
+                    right_score++;
+                }
+            }
+
+            // Calculate and update the maximum score
+            max_score = Math.max(max_score, left_score + right_score);
+        }
+
+        return max_score;
+    }
+}
