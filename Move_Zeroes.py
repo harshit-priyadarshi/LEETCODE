@@ -2,7 +2,7 @@
 Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
 """
 class Solution:
-    def moveZeroes(self, nums: List[int]) -> None:
+    def moveZeroes(self, nums: list[int]) -> None:
         left, right = 0, 0
         n = len(nums)
 
